@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{# recuperation du titre hérité parent : base #}
+{% block title %}Ajouter un article - {{ parent()}}{% endblock %}
+
+{% block body %}
+
+<div class="titre text-center mb-5 mt-5 text-success">
+    <h2>Ajouter un article</h2>
+</div>
+
+{# formulaire d'ajout d'un article #}
+<form method="post">
+    <fieldset>
+        <div class="form-group">
+            <label for="titre">Le titre de l'article</label>
+            <input type="text" class="form-control" id="titre" placeholder="votre titre" name='titre'>
+        </div>
+        <div class="form-group">
+            <label for="contenu">Le contenu de votre article</label>
+            <textarea class="form-control" id="contenu" rows="6" placeholder="racontez-nous..." name='contenu'></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">L'image de votre article</label>
+            <input type="text" class="form-control" id="image" placeholder="le lien de l'image votre article : https://... " name='image'>
+        </div>
+        <button type="submit" class="btn btn-success mt-4">Valider</button>
+    </div>
+        
+    </fieldset>
+</form>
+{% endblock %}
+
+

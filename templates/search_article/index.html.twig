@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La recherche - {{ parent()}}{% endblock %}
+
+{% block body %}
+
+<div class="titre text-center mb-5 mt-5 text-success">
+    <h2>Rechercher un article</h2>
+</div>
+
+{# formulaire de recherche d'un article #}
+<form method="post">
+    <fieldset>
+        <div class="form-group">
+            <label for="titre">Le titre de l'article</label>
+            <input type="text" class="form-control" id="titre" placeholder="votre titre" name='titre'>
+        </div>
+            <button type="submit" class="btn btn-success mt-4">Valider</button>
+        </div>   
+    </fieldset>
+</form>
+
+
+<div class="titre text-center mb-5 mt-5 text-success">
+    <h2>Résultat de recherche</h2>
+</div>
+
+<div class="row">
+{% if articlesBlog is defined and articlesBlog is not null%}
+    {# affichage de la liste des articles #}
+    
+        {% for article in articlesBlog %}
+            <div class="card mb-3 col-4">
+                <h3 class="card-header">{{ article.titre }}</h3>
+                <div class="card-body">
+                    <p class="card-text">{{ article.contenu }}</p>
+                </div>
+                <div class="mb-3">
+                    <img style="height: 200px; width: 100%; display: block;" src={{ article.image }} alt="Card image">
+                </div>
+                 <div class="card-footer text-muted">
+                <p>Crée le {{ article.dateCreation | date("d/m/Y")}}</p>
+                </div>
+            </div>
+        {% endfor %}
+   
+{% endif %}
+</div> 
+
+{% endblock %}
+

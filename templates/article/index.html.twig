@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{# recuperation du titre hérité parent : base #}
+{% block title %}Les articles - {{ parent()}}{% endblock %}
+
+{% block body %}
+
+<div class="titre text-center mb-5 mt-5 text-success">
+    <h2>Tous les articles</h2>
+</div>
+<div class="row">
+{% if articlesBlog is defined and articlesBlog is not null%}
+    {# affichage de la liste des articles #}
+    
+        {% for article in articlesBlog %}
+            <div class="card mb-3 col-4">
+                <h3 class="card-header">{{ article.titre }}</h3>
+                <div class="card-body">
+                    <p class="card-text">{{ article.contenu }}</p>
+                </div>
+                <div class="mb-3">
+                    <img style="height: 200px; width: 100%; display: block;" src={{ article.image }} alt="Card image">
+                </div>
+                 <div class="card-footer text-muted">
+                <p>Crée le {{ article.dateCreation | date("d/m/Y")}}</p>
+                </div>
+            </div>
+        {% endfor %}
+   
+{% endif %}
+</div> 
+
+{% endblock %}
+
